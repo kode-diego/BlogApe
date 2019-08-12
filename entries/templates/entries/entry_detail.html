@@ -1,0 +1,31 @@
+{% extends 'entries/base.html' %}
+
+
+
+{% block content %}
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8 mt-4">
+        <a href="{% url 'blog-home' %}"> <span class="alert alert-info" style="z-index: 9;">Back To Home</span> </a>
+        <!-- Blog Post -->
+        <div class="card mb-4 mt-4">
+          <div class="card-body">
+            <h3 class="card-title">{{ object.entry_title }}</h3>
+            <p class="card-text">{{ object.entry_text|linebreaks }}</p>
+          </div>
+          <div class="card-footer text-muted">
+            Posted on {{ object.entry_date }} by
+            <span class= "text-info mr-2">S {{ object.entry_author }} </span>
+          </div>
+           {% if object.entry_author == user %}
+                <div>
+                    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+                    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+      </div>
+
+
+{% endblock %}

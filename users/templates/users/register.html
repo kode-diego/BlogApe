@@ -1,0 +1,27 @@
+{% extends 'entries/base.html' %}
+{% load bootstrap %}
+
+
+{% block content %}
+<br><br> <br>
+      <div class="col-md-12">
+        <div class="card mb-4 mt-4">
+          <div class="card-header">
+            Create an Account
+          </div>
+          <div class="card-body">
+            <form method="POST">
+              {% csrf_token %}
+              {{form| bootstrap}}
+              <button type="submit" class="btn btn-primary">Create Account</button>
+            </form>
+            <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2 mt-4" href="{% url 'login' %}">Login Now</a>
+            </small>
+        </div>
+          </div>
+        </div>
+
+      </div>
+{% endblock %}
